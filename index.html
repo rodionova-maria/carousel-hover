@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny-slider</title>
+
+    <link rel="stylesheet" href="node_modules/tiny-slider/dist/tiny-slider.css">
+    <link rel="stylesheet" href="node_modules/lightgallery/css/lightgallery.css" />
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+
+
+        .tns {
+            position: relative
+        }
+
+        .tns .tns__slide img {
+            width: 100%;
+            object-position: center;
+            object-fit: cover;
+            aspect-ratio: 4/3;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .tns .tns-nav {
+            position: absolute;
+            z-index: 1;
+            right: 5px;
+            bottom: 5px;
+            display: inline-flex;
+            padding: 5px;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            border-radius: 5px;
+            background: #fff;
+        }
+
+        .tns .tns-nav button {
+            background: #0345A8;
+            width: 5px;
+            height: 5px;
+            border: 0;
+            border-radius: 5px;
+            transition: width .1s;
+
+        }
+
+        .tns .tns-nav .tns-nav-active {
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width:300px">
+
+        <div class="tns">
+            <div class="tns__slides">
+                <div class="tns__slide"><a href="img/3_.jpg"><img src="img/3_sm_.jpg" alt="Slide 3_"
+                            class="tns-lazy-img" data-src="img/3_.jpg"></a>
+                </div>
+                <div class="tns__slide"><a href="img/1.jpg"><img src="img/1_sm.jpg" alt="Slide 1" class="tns-lazy-img"
+                            data-src="img/1.jpg"></a>
+                </div>
+                <div class="tns__slide"><a href="img/2.jpg"><img src="img/2_sm.jpg" alt="Slide 2" class="tns-lazy-img"
+                            data-src="img/2.jpg"></a>
+                </div>
+                <div class="tns__slide"><a href="img/3.jpg"><img src="img/3_sm.jpg" alt="Slide 3" class="tns-lazy-img"
+                            data-src="img/3.jpg"></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    Текст
+
+    <script src="node_modules/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="node_modules/lightgallery/lightgallery.min.js"></script>
+
+    <script>
+        const tinySlider = tns({
+            container: '.tns__slides',
+            slideBy: 1,
+            items: 1,
+            loop: false,
+            speed: 100,
+            controls: false,
+            lazyload: true
+        });
+
+        const tinyContainer = document.querySelector('.tns');
+        const slides = tinyContainer.querySelector('.tns__slides');
+        const slidesCount = slides.querySelectorAll('.tns__slide').length;
+
+        tinyContainer.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX - tinyContainer.getBoundingClientRect().left;
+            const sliderWidth = tinyContainer.offsetWidth;
+            const hoverWidth = sliderWidth / slidesCount;
+            const slideIndex = Math.floor(mouseX / hoverWidth);
+
+            if (slideIndex >= 0 && slideIndex < slidesCount) {
+                tinySlider.goTo(slideIndex)
+            }
+        });
+
+        const lg = lightGallery(slides, {
+            selector: '.tns__slide a'
+        });
+
+        slides.addEventListener('lgBeforeClose', () => {
+            tinySlider.goTo(lg.index)
+        });
+    </script>
+</body>
+
+</html>
