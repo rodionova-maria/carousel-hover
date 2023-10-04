@@ -16,19 +16,24 @@
         }
 
 
-
-
         .tns {
-            position: relative
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
         }
 
-        .tns .tns__slide img {
+        .tns__slide-wrap {
+            padding-top: 66.666666%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tns__slide-wrap img {
             width: 100%;
-            object-position: center;
-            object-fit: cover;
-            aspect-ratio: 4/3;
-            border-radius: 10px;
             display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .tns .tns-nav {
@@ -62,21 +67,29 @@
 </head>
 
 <body>
-    <div style="width:300px">
+    <div style="width: 300px">
 
         <div class="tns">
             <div class="tns__slides">
-                <div class="tns__slide"><a href="img/3_.jpg"><img src="img/3_sm_.jpg" alt="Slide 3_"
-                            class="tns-lazy-img" data-src="img/3_.jpg"></a>
+                <div class="tns__slide">
+                    <div class="tns__slide-wrap"><a href="img/3_.jpg"><img src="img/3_sm_.jpg" alt="Slide 3_"
+                                class="tns-lazy-img" data-src="img/3_.jpg"></a>
+                    </div>
                 </div>
-                <div class="tns__slide"><a href="img/1.jpg"><img src="img/1_sm.jpg" alt="Slide 1" class="tns-lazy-img"
-                            data-src="img/1.jpg"></a>
+                <div class="tns__slide">
+                    <div class="tns__slide-wrap"><a href="img/1.jpg"><img src="img/1_sm.jpg" alt="Slide 1"
+                                class="tns-lazy-img" data-src="img/1.jpg"></a>
+                    </div>
                 </div>
-                <div class="tns__slide"><a href="img/2.jpg"><img src="img/2_sm.jpg" alt="Slide 2" class="tns-lazy-img"
-                            data-src="img/2.jpg"></a>
+                <div class="tns__slide">
+                    <div class="tns__slide-wrap"><a href="img/2.jpg"><img src="img/2_sm.jpg" alt="Slide 2"
+                                class="tns-lazy-img" data-src="img/2.jpg"></a>
+                    </div>
                 </div>
-                <div class="tns__slide"><a href="img/3.jpg"><img src="img/3_sm.jpg" alt="Slide 3" class="tns-lazy-img"
-                            data-src="img/3.jpg"></a>
+                <div class="tns__slide">
+                    <div class="tns__slide-wrap"><a href="img/3.jpg"><img src="img/3_sm.jpg" alt="Slide 3"
+                                class="tns-lazy-img" data-src="img/3.jpg"></a>
+                    </div>
                 </div>
             </div>
         </div>
